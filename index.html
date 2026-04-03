@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Chris Wilson | Mortgage Broker | Serving British Columbia</title>
+    <meta name="description" content="Chris Wilson is a licensed mortgage broker serving clients across British Columbia. Get personalized mortgage advice for purchases, refinancing, and renewals." />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#5b4e00",
+                        "surface-tint": "#d7fc69",
+                        "tertiary": "#ffeb92",
+                        "surface-bright": "#2c2c2c",
+                        "tertiary-fixed": "#f9dd44",
+                        "on-tertiary": "#645600",
+                        "on-tertiary-fixed": "#463b00",
+                        "surface-container-highest": "#262626",
+                        "inverse-primary": "#516700",
+                        "secondary-fixed-dim": "#ddda49",
+                        "on-error": "#450900",
+                        "primary-dim": "#caee5d",
+                        "surface-variant": "#262626",
+                        "outline": "#757575",
+                        "primary-fixed-dim": "#c7eb5a",
+                        "surface-container": "#191919",
+                        "inverse-on-surface": "#555555",
+                        "tertiary-fixed-dim": "#eacf37",
+                        "on-secondary": "#565400",
+                        "on-secondary-container": "#fffca7",
+                        "background": "#0e0e0e",
+                        "inverse-surface": "#f9f9f9",
+                        "tertiary-dim": "#eacf37",
+                        "error": "#ff7351",
+                        "primary-fixed": "#d5f967",
+                        "on-surface": "#ffffff",
+                        "secondary-container": "#636100",
+                        "tertiary-container": "#f9dd44",
+                        "surface-container-high": "#1f1f1f",
+                        "on-error-container": "#ffd2c8",
+                        "on-secondary-fixed-variant": "#605e00",
+                        "outline-variant": "#484848",
+                        "surface-container-low": "#131313",
+                        "on-primary-fixed-variant": "#536900",
+                        "primary": "#d7fc69",
+                        "secondary": "#ece856",
+                        "on-tertiary-fixed-variant": "#665800",
+                        "surface-container-lowest": "#000000",
+                        "error-container": "#b92902",
+                        "on-primary-fixed": "#3a4a00",
+                        "secondary-dim": "#ddda49",
+                        "primary-container": "#8cac1f",
+                        "on-primary-container": "#1c2600",
+                        "error-dim": "#d53d18",
+                        "secondary-fixed": "#ece856",
+                        "on-background": "#ffffff",
+                        "surface-dim": "#0e0e0e",
+                        "on-secondary-fixed": "#434100",
+                        "surface": "#0e0e0e",
+                        "on-surface-variant": "#ababab",
+                        "on-primary": "#4b6000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e0e0e;
+            color: #ffffff;
+        }
+
+        .font-headline {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(31, 31, 31, 0.6);
+            backdrop-filter: blur(24px);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Subtle float animation for hero accent */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Gradient text shimmer */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, #d7fc69 0%, #caee5d 25%, #ffffff 50%, #d7fc69 75%, #caee5d 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 6s linear infinite;
+        }
+
+        /* Stat counter animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-reveal {
+            animation: countUp 0.8s ease-out forwards;
+        }
+
+        /* Headshot glow */
+        .headshot-glow {
+            box-shadow: 0 0 60px rgba(215, 252, 105, 0.15), 0 0 120px rgba(215, 252, 105, 0.05);
+        }
+
+        /* Accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Card hover lift */
+        .card-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-lift:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface antialiased selection:bg-primary selection:text-on-primary">
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-zinc-950/70 backdrop-blur-xl border-b border-white/5">
+        <div class="flex justify-between items-center px-6 md:px-8 py-4 max-w-[1920px] mx-auto">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                    <span class="text-on-primary font-headline font-black text-lg">CW</span>
+                </div>
+                <div>
+                    <div class="text-lg font-black tracking-tight text-white font-headline leading-tight">Chris Wilson</div>
+                    <div class="text-[10px] text-zinc-500 font-bold tracking-[0.15em] uppercase">Mortgage Broker</div>
+                </div>
+            </div>
+            <div class="hidden md:flex gap-8 items-center">
+                <a id="nav-about" class="text-zinc-400 font-headline font-bold text-sm tracking-tight hover:text-primary transition-colors duration-300"
+                    href="#about">About</a>
+                <a id="nav-services" class="text-zinc-400 font-headline font-bold text-sm tracking-tight hover:text-primary transition-colors duration-300"
+                    href="#services">Services</a>
+                <a id="nav-lenders" class="text-zinc-400 font-headline font-bold text-sm tracking-tight hover:text-primary transition-colors duration-300"
+                    href="#lenders">Lenders</a>
+                <a id="nav-faq" class="text-zinc-400 font-headline font-bold text-sm tracking-tight hover:text-primary transition-colors duration-300"
+                    href="#faq">FAQ</a>
+                <a id="nav-contact" class="text-zinc-400 font-headline font-bold text-sm tracking-tight hover:text-primary transition-colors duration-300"
+                    href="#contact">Contact</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:6048419402" class="hidden sm:flex items-center gap-2 text-zinc-400 hover:text-primary transition-colors text-sm">
+                    <span class="material-symbols-outlined text-base">phone</span>
+                    604-841-9402
+                </a>
+                <a href="#contact"
+                    class="bg-primary text-on-primary px-5 py-2.5 rounded-md font-headline font-bold text-sm tracking-tight hover:opacity-90 transition-all">
+                    Get in Touch
+                </a>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950/95 backdrop-blur-xl border-t border-white/5 px-6 py-6 space-y-4">
+            <a class="block text-zinc-300 font-headline font-bold hover:text-primary transition-colors" href="#about">About</a>
+            <a class="block text-zinc-300 font-headline font-bold hover:text-primary transition-colors" href="#services">Services</a>
+            <a class="block text-zinc-300 font-headline font-bold hover:text-primary transition-colors" href="#lenders">Lenders</a>
+            <a class="block text-zinc-300 font-headline font-bold hover:text-primary transition-colors" href="#faq">FAQ</a>
+            <a class="block text-zinc-300 font-headline font-bold hover:text-primary transition-colors" href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main class="pt-20">
+        <!-- ============================================ -->
+        <!-- HERO: Personal, warm, Chris-centric          -->
+        <!-- ============================================ -->
+        <section id="hero" class="relative min-h-[90vh] flex items-center px-6 md:px-16 lg:px-24 py-24 overflow-hidden">
+            <!-- Background -->
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/90 to-surface-container-lowest/60 z-10"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent z-10"></div>
+                <img alt="Beautiful residential home"
+                    class="w-full h-full object-cover grayscale opacity-30"
+                    src="hero-bg.png" />
+            </div>
+
+            <!-- Decorative accent -->
+            <div class="absolute top-20 right-10 md:right-32 w-48 h-48 bg-primary/5 rounded-full blur-[100px] float-anim z-0"></div>
+
+            <div class="relative z-20 max-w-6xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center">
+                <!-- Left: Copy -->
+                <div class="md:col-span-7">
+                    <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-6 block">Your Licensed Mortgage Professional</span>
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-headline font-extrabold leading-[0.95] tracking-tighter mb-8">
+                        Helping you build wealth<br />
+                        <span class="shimmer-text">through real estate.</span>
+                    </h1>
+                    <p class="text-on-surface-variant text-lg md:text-xl max-w-xl mb-6 leading-relaxed">
+                        If you're looking for mortgage financing, you've come to the right place.
+                        Let me help you find the best mortgage to meet your needs.
+                    </p>
+                    <p class="text-primary italic font-headline font-bold text-lg mb-10">— Chris Wilson</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://ilmb.typeform.com/to/zF9R0EPq"
+                            class="bg-primary text-on-primary px-8 py-4 rounded-md font-headline font-black text-base hover:bg-primary-dim transition-all flex items-center gap-3 justify-center">
+                            Start Your Application
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a href="#services"
+                            class="bg-surface-container-highest text-primary px-8 py-4 rounded-md font-headline font-bold text-base hover:bg-surface-variant transition-all border border-outline-variant/20 text-center">
+                            Mortgage Guide
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Chris's photo + stats -->
+                <div class="md:col-span-5 flex flex-col items-center">
+                    <div class="relative">
+                        <div class="w-56 h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden headshot-glow border-2 border-primary/20">
+                            <img
+                                src="https://assets.cdn.filesafe.space/4Ks1K4Lj5YOsB3tWhnfx/media/69cf2782fcf3f9acd75423af.png"
+                                alt="Chris Wilson - Mortgage Broker"
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-4 -right-4 bg-primary text-on-primary px-4 py-2 rounded-lg font-headline font-bold text-xs shadow-lg shadow-primary/20">
+                            <span class="material-symbols-outlined text-sm align-middle mr-1">verified</span>
+                            Licensed Broker
+                        </div>
+                    </div>
+                    <!-- Quick stats -->
+                    <div class="grid grid-cols-2 gap-6 mt-10 w-full max-w-xs">
+                        <div class="text-center stat-reveal">
+                            <div class="text-3xl font-headline font-black text-primary">BC</div>
+                            <div class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Province-Wide</div>
+                        </div>
+                        <div class="text-center stat-reveal" style="animation-delay: 0.2s">
+                            <div class="text-3xl font-headline font-black text-primary">50+</div>
+                            <div class="text-xs text-zinc-500 uppercase tracking-widest mt-1">Lender Partners</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- ABOUT: Chris's personal story                -->
+        <!-- ============================================ -->
+        <section id="about" class="bg-surface-container-lowest py-24 md:py-32 px-6 md:px-8">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <div class="relative">
+                        <div class="w-full aspect-[4/5] rounded-xl overflow-hidden border border-outline-variant/10">
+                            <img src="https://assets.cdn.filesafe.space/4Ks1K4Lj5YOsB3tWhnfx/media/69cf2782fcf3f9acd75423af.png"
+                                alt="Chris Wilson portrait"
+                                class="w-full h-full object-cover" />
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-surface-container border border-outline-variant/20 rounded-lg p-4 shadow-2xl">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-primary">workspace_premium</span>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold">BRX Mortgage</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest">Submortgage Broker</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-7">
+                    <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">About Me</span>
+                    <h2 class="text-3xl md:text-5xl font-headline font-extrabold tracking-tighter mb-8">
+                        Meet Chris Wilson.
+                    </h2>
+                    <div class="space-y-5 text-on-surface-variant leading-relaxed text-base">
+                        <p>
+                            I am a passionate and professional mortgage broker who provides tailored and independent advice to
+                            clients across the GVA. I am driven by the mission of helping people achieve their homeownership goals,
+                            and I bring a diverse and global perspective to the team at BRX Mortgage.
+                        </p>
+                        <p>
+                            In my current role as a Mortgage Broker at BRX, I leverage my strong analytical and strategic skills to
+                            assess the clients' needs, preferences, and financial situation, and to offer them the best mortgage
+                            solutions from a wide range of lenders and products.
+                        </p>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <div class="flex items-center gap-2 text-sm text-zinc-400 bg-surface-container-highest px-4 py-2 rounded-md">
+                            <span class="material-symbols-outlined text-primary text-base">location_on</span>
+                            Greater Vancouver Area
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-zinc-400 bg-surface-container-highest px-4 py-2 rounded-md">
+                            <span class="material-symbols-outlined text-primary text-base">public</span>
+                            Serving All of BC
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-zinc-400 bg-surface-container-highest px-4 py-2 rounded-md">
+                            <span class="material-symbols-outlined text-primary text-base">translate</span>
+                            Multilingual Service
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SERVICES: What Chris can help with           -->
+        <!-- ============================================ -->
+        <section id="services" class="bg-surface py-24 md:py-32 px-6 md:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-20">
+                    <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">How I Can Help</span>
+                    <h2 class="text-3xl md:text-5xl font-headline font-extrabold tracking-tighter mb-6">
+                        Mortgage Solutions<br />Tailored to You.
+                    </h2>
+                    <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">
+                        Whether you're buying your first home, refinancing, or renewing, I'll find the right mortgage from over 50 lenders to match your goals.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- New Mortgage -->
+                    <div class="card-lift bg-surface-container border border-outline-variant/10 rounded-xl p-10 group cursor-pointer relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-primary text-2xl">home</span>
+                            </div>
+                            <h3 class="text-xl font-headline font-bold mb-4 group-hover:text-primary transition-colors">New Mortgage</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                                Are you looking for a mortgage to purchase a new home? I'll guide you through every step of the process, from pre-approval to closing day.
+                            </p>
+                            <a href="https://ilmb.typeform.com/to/zF9R0EPq" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all">
+                                Get Started
+                                <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Refinance -->
+                    <div class="card-lift bg-surface-container border border-outline-variant/10 rounded-xl p-10 group cursor-pointer relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-primary text-2xl">swap_horiz</span>
+                            </div>
+                            <h3 class="text-xl font-headline font-bold mb-4 group-hover:text-primary transition-colors">Refinance</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                                Are you looking for a mortgage to pay off something or to renovate or invest? Let me help find the best refinancing solution for your situation.
+                            </p>
+                            <a href="https://ilmb.typeform.com/to/O1srnu9j" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all">
+                                Get Started
+                                <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Renewal -->
+                    <div class="card-lift bg-surface-container border border-outline-variant/10 rounded-xl p-10 group cursor-pointer relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                                <span class="material-symbols-outlined text-primary text-2xl">autorenew</span>
+                            </div>
+                            <h3 class="text-xl font-headline font-bold mb-4 group-hover:text-primary transition-colors">Renew Mortgage</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                                Are you seeing your mortgage coming up for a renewal? Don't just accept your existing lender's rate — let me shop the market for you.
+                            </p>
+                            <a href="https://ilmb.typeform.com/to/WADAXd3F" class="inline-flex items-center gap-2 text-primary font-bold text-sm hover:gap-3 transition-all">
+                                Get Started
+                                <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- WHY CHRIS: Value propositions                -->
+        <!-- ============================================ -->
+        <section class="bg-surface-container-lowest py-24 md:py-32 px-6 md:px-8">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+                <div>
+                    <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Why Work With Me</span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight mb-10">
+                        A personal approach<br />to your biggest investment.
+                    </h2>
+                    <div class="space-y-10">
+                        <div class="flex gap-5">
+                            <span class="text-primary font-headline font-black text-2xl mt-1">01.</span>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Independent Advice</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">I'm not tied to any single bank. I shop your mortgage across 50+ lenders to find the best rate and terms for your unique situation.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="text-primary font-headline font-black text-2xl mt-1">02.</span>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Tailored Strategy</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">Every client's financial situation is different. I take the time to understand your goals and build a mortgage strategy that works for your life.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <span class="text-primary font-headline font-black text-2xl mt-1">03.</span>
+                            <div>
+                                <h3 class="text-lg font-bold mb-2">Transparent Process</h3>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">No hidden fees, no surprises. I walk you through every step so you always know what's happening with your application.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick-start form panel -->
+                <div class="bg-surface-container border border-outline-variant/10 rounded-xl p-10 md:p-12 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+                    <div class="relative z-10">
+                        <div class="w-16 h-1 bg-primary mb-10"></div>
+                        <h3 class="text-2xl font-headline font-bold mb-3">Ready to get started?</h3>
+                        <p class="text-on-surface-variant mb-10 text-sm">Tell me what you're looking for and I'll get back to you within one business day.</p>
+                        <div class="space-y-4">
+                            <a href="https://ilmb.typeform.com/to/zF9R0EPq"
+                                class="p-4 bg-surface-container-highest rounded border border-outline-variant/30 flex justify-between items-center hover:border-primary/50 transition-all cursor-pointer block">
+                                <span class="font-bold text-sm">I'm Purchasing a Property</span>
+                                <span class="material-symbols-outlined text-primary">chevron_right</span>
+                            </a>
+                            <a href="https://ilmb.typeform.com/to/O1srnu9j"
+                                class="p-4 bg-surface-container-highest rounded border border-outline-variant/30 flex justify-between items-center hover:border-primary/50 transition-all cursor-pointer block">
+                                <span class="font-bold text-sm">I'm Refinancing My Mortgage</span>
+                                <span class="material-symbols-outlined text-primary">chevron_right</span>
+                            </a>
+                            <a href="https://ilmb.typeform.com/to/WADAXd3F"
+                                class="p-4 bg-surface-container-highest rounded border border-outline-variant/30 flex justify-between items-center hover:border-primary/50 transition-all cursor-pointer block">
+                                <span class="font-bold text-sm">My Mortgage is Up for Renewal</span>
+                                <span class="material-symbols-outlined text-primary">chevron_right</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- LENDER PARTNERS                              -->
+        <!-- ============================================ -->
+        <section id="lenders" class="bg-surface py-20 md:py-28 px-6 md:px-8">
+            <div class="max-w-5xl mx-auto text-center">
+                <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Lender Partners</span>
+                <h2 class="text-3xl md:text-4xl font-headline font-extrabold tracking-tighter mb-6">
+                    Access to Canada's Top Lenders.
+                </h2>
+                <p class="text-on-surface-variant text-base max-w-2xl mx-auto mb-16">
+                    I work with a wide range of banks, credit unions, and alternative lenders to ensure you get the most competitive rates and terms.
+                </p>
+                <!-- Lender logos as styled text badges -->
+                <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        Scotiabank
+                    </div>
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        TD Bank
+                    </div>
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        First National
+                    </div>
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        Home Trust
+                    </div>
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        RMG Mortgages
+                    </div>
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        MCAP
+                    </div>
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        Merix Financial
+                    </div>
+                    <div class="bg-surface-container-highest border border-outline-variant/10 rounded-lg px-8 py-5 font-headline font-bold text-zinc-300 text-sm hover:border-primary/30 hover:text-white transition-all">
+                        CMLS Financial
+                    </div>
+                </div>
+                <p class="text-zinc-600 text-xs mt-10 uppercase tracking-widest">And many more — 50+ lender partnerships</p>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- TESTIMONIALS                                 -->
+        <!-- ============================================ -->
+        <section class="bg-surface-container-lowest py-24 md:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 md:px-8 mb-14 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
+                <div>
+                    <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Client Reviews</span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tight">What My Clients Say.</h2>
+                </div>
+                <div class="flex gap-3">
+                    <button id="testimonial-prev"
+                        class="w-11 h-11 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-xl">west</span>
+                    </button>
+                    <button id="testimonial-next"
+                        class="w-11 h-11 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-xl">east</span>
+                    </button>
+                </div>
+            </div>
+            <div id="testimonial-track" class="flex gap-6 px-6 md:px-8 overflow-x-auto no-scrollbar pb-8 scroll-smooth">
+                <!-- Testimonial 1 -->
+                <div class="min-w-[340px] md:min-w-[400px] bg-surface-container p-8 md:p-10 rounded-xl border border-outline-variant/10 flex-shrink-0">
+                    <div class="flex text-primary mb-5">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-lg leading-relaxed italic mb-8">"Chris made the whole process so easy. He found us an incredible rate and was there every step of the way. Highly recommend for first-time buyers!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 rounded bg-surface-container-highest flex items-center justify-center font-bold text-primary text-sm">RK</div>
+                        <div>
+                            <p class="font-bold text-sm">Ravi K.</p>
+                            <p class="text-xs text-on-surface-variant">First-Time Homebuyer, Vancouver</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="min-w-[340px] md:min-w-[400px] bg-surface-container p-8 md:p-10 rounded-xl border border-outline-variant/10 flex-shrink-0">
+                    <div class="flex text-primary mb-5">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-lg leading-relaxed italic mb-8">"I was renewing and my bank offered me a terrible rate. Chris shopped around and saved me thousands over my term. Professional and responsive."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 rounded bg-surface-container-highest flex items-center justify-center font-bold text-primary text-sm">SM</div>
+                        <div>
+                            <p class="font-bold text-sm">Sarah M.</p>
+                            <p class="text-xs text-on-surface-variant">Renewal Client, Surrey</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="min-w-[340px] md:min-w-[400px] bg-surface-container p-8 md:p-10 rounded-xl border border-outline-variant/10 flex-shrink-0">
+                    <div class="flex text-primary mb-5">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-lg leading-relaxed italic mb-8">"Chris helped us navigate the stress test and find a creative solution for our investment property. His knowledge of the BC market is outstanding."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 rounded bg-surface-container-highest flex items-center justify-center font-bold text-primary text-sm">AL</div>
+                        <div>
+                            <p class="font-bold text-sm">Arthur L.</p>
+                            <p class="text-xs text-on-surface-variant">Property Investor, Burnaby</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 4 -->
+                <div class="min-w-[340px] md:min-w-[400px] bg-surface-container p-8 md:p-10 rounded-xl border border-outline-variant/10 flex-shrink-0">
+                    <div class="flex text-primary mb-5">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                    <p class="text-lg leading-relaxed italic mb-8">"We had a complicated self-employed situation and Chris took the time to understand our finances and find a lender that worked for us. True professional."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 rounded bg-surface-container-highest flex items-center justify-center font-bold text-primary text-sm">JC</div>
+                        <div>
+                            <p class="font-bold text-sm">Janet C.</p>
+                            <p class="text-xs text-on-surface-variant">Self-Employed, New Westminster</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- FAQ / Education                              -->
+        <!-- ============================================ -->
+        <section id="faq" class="bg-surface py-24 md:py-32 px-6 md:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-16 flex items-center gap-6">
+                    <div class="h-px bg-primary/30 flex-grow"></div>
+                    <h2 class="text-2xl md:text-3xl font-headline font-black text-white whitespace-nowrap uppercase tracking-widest">
+                        Mortgage FAQ
+                    </h2>
+                    <div class="h-px bg-primary/30 flex-grow"></div>
+                </div>
+                <div class="space-y-6" id="faq-container">
+                    <div class="faq-item group cursor-pointer border border-outline-variant/10 rounded-lg overflow-hidden" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center p-6 hover:bg-surface-container-highest/50 transition-all">
+                            <h3 class="text-lg font-bold group-hover:text-primary transition-all pr-4">What is the mortgage stress test?</h3>
+                            <span class="material-symbols-outlined text-primary faq-icon transition-transform flex-shrink-0">add</span>
+                        </div>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-on-surface-variant leading-relaxed text-sm">
+                                In Canada, you must qualify at either the contract rate + 2% or the benchmark rate (whichever is higher).
+                                I help you understand the impact on your borrowing power and explore strategies — like longer amortizations
+                                or alternative lenders — to help you qualify for the home you want.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item group cursor-pointer border border-outline-variant/10 rounded-lg overflow-hidden" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center p-6 hover:bg-surface-container-highest/50 transition-all">
+                            <h3 class="text-lg font-bold group-hover:text-primary transition-all pr-4">How much down payment do I need?</h3>
+                            <span class="material-symbols-outlined text-primary faq-icon transition-transform flex-shrink-0">add</span>
+                        </div>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-on-surface-variant leading-relaxed text-sm">
+                                The minimum down payment in Canada is 5% for homes under $500,000, 10% on the portion between $500K–$1M,
+                                and 20% for homes over $1M. However, putting down more or less can significantly impact your rate and
+                                insurance costs — I'll help you find the optimal balance.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item group cursor-pointer border border-outline-variant/10 rounded-lg overflow-hidden" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center p-6 hover:bg-surface-container-highest/50 transition-all">
+                            <h3 class="text-lg font-bold group-hover:text-primary transition-all pr-4">Should I choose variable or fixed rate?</h3>
+                            <span class="material-symbols-outlined text-primary faq-icon transition-transform flex-shrink-0">add</span>
+                        </div>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-on-surface-variant leading-relaxed text-sm">
+                                It depends on your risk tolerance and financial goals. Fixed rates offer payment certainty; variable rates
+                                can save you money over the long term but carry some risk. I'll analyze your situation and walk you through
+                                the pros and cons of each option.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item group cursor-pointer border border-outline-variant/10 rounded-lg overflow-hidden" onclick="toggleFaq(this)">
+                        <div class="flex justify-between items-center p-6 hover:bg-surface-container-highest/50 transition-all">
+                            <h3 class="text-lg font-bold group-hover:text-primary transition-all pr-4">Does using a mortgage broker cost me anything?</h3>
+                            <span class="material-symbols-outlined text-primary faq-icon transition-transform flex-shrink-0">add</span>
+                        </div>
+                        <div class="faq-answer px-6 pb-6">
+                            <p class="text-on-surface-variant leading-relaxed text-sm">
+                                In most cases, my services are completely free to you. I'm compensated by the lender when your mortgage
+                                is funded. In some special circumstances (private lending, complex files), there may be a broker fee — but
+                                I'll always be transparent about costs upfront.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- BOOKING / CTA                                -->
+        <!-- ============================================ -->
+        <section class="bg-surface-container-lowest py-24 md:py-32 px-6 md:px-8 relative overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none">
+                <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full"></div>
+                <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/3 blur-[80px] rounded-full"></div>
+            </div>
+            <div class="max-w-5xl mx-auto relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter mb-6">
+                        Let's Find Your<br />
+                        <span class="text-primary">Perfect Mortgage.</span>
+                    </h2>
+                    <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">
+                        Book a free consultation and let's discuss your goals. Whether you're buying, renewing, or refinancing — I'm here to help.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                    <a href="tel:6048419402"
+                        class="bg-surface-container border border-outline-variant/10 rounded-xl p-8 text-center hover:border-primary/30 transition-all group card-lift block">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl">phone</span>
+                        </div>
+                        <h3 class="text-lg font-headline font-bold mb-2">Call Me Directly</h3>
+                        <p class="text-primary font-bold text-lg">604-841-9402</p>
+                        <p class="text-zinc-500 text-xs mt-2 uppercase tracking-widest">Mon–Fri · 9AM–6PM PST</p>
+                    </a>
+                    <a href="mailto:chris@chriswilsonmb.com"
+                        class="bg-surface-container border border-outline-variant/10 rounded-xl p-8 text-center hover:border-primary/30 transition-all group card-lift block">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 transition-all">
+                            <span class="material-symbols-outlined text-primary text-2xl">mail</span>
+                        </div>
+                        <h3 class="text-lg font-headline font-bold mb-2">Email Me</h3>
+                        <p class="text-primary font-bold text-base">chris@chriswilsonmb.com</p>
+                        <p class="text-zinc-500 text-xs mt-2 uppercase tracking-widest">Response within 24 hours</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER                                       -->
+    <!-- ============================================ -->
+    <footer id="contact" class="w-full border-t border-white/5 bg-[#000000]">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 md:px-12 py-20 max-w-7xl mx-auto">
+            <!-- Column 1: Chris -->
+            <div class="space-y-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                        <span class="text-on-primary font-headline font-black text-lg">CW</span>
+                    </div>
+                    <div>
+                        <div class="text-lg font-black text-white font-headline">Chris Wilson</div>
+                        <div class="text-[10px] text-zinc-500 font-bold tracking-[0.15em] uppercase">Submortgage Broker</div>
+                    </div>
+                </div>
+                <p class="text-zinc-500 text-sm leading-relaxed">
+                    Serving clients across British Columbia with tailored, independent mortgage advice. Let me help you build wealth through real estate.
+                </p>
+                <div class="space-y-2 text-sm text-zinc-400">
+                    <a href="mailto:chris@chriswilsonmb.com" class="flex items-center gap-2 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-base text-primary">mail</span>
+                        chris@chriswilsonmb.com
+                    </a>
+                    <a href="tel:6048419402" class="flex items-center gap-2 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-base text-primary">phone</span>
+                        604-841-9402
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="grid grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold uppercase text-xs tracking-[0.2em] mb-5">Navigate</h4>
+                    <a class="block text-zinc-500 hover:text-primary transition-all duration-200 text-sm" href="#about">About Chris</a>
+                    <a class="block text-zinc-500 hover:text-primary transition-all duration-200 text-sm" href="#services">Services</a>
+                    <a class="block text-zinc-500 hover:text-primary transition-all duration-200 text-sm" href="#lenders">Lender Partners</a>
+                    <a class="block text-zinc-500 hover:text-primary transition-all duration-200 text-sm" href="#faq">FAQ</a>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold uppercase text-xs tracking-[0.2em] mb-5">Connect</h4>
+                    <a class="block text-zinc-500 hover:text-primary transition-all duration-200 text-sm" href="#">LinkedIn</a>
+                    <a class="block text-zinc-500 hover:text-primary transition-all duration-200 text-sm" href="#">Instagram</a>
+                </div>
+            </div>
+
+            <!-- Column 3: BRX & Regulatory -->
+            <div class="space-y-6">
+                <div>
+                    <div class="text-xl font-headline font-black text-white tracking-wider mb-1">BRX</div>
+                    <div class="text-[9px] text-zinc-600 uppercase tracking-[0.3em]">Mortgage</div>
+                </div>
+                <div class="text-zinc-600 text-[11px] leading-relaxed space-y-1">
+                    <p>FSPR: 13643</p>
+                    <p>BCFSA: X300291</p>
+                    <p>RECA: BRX Mortgage Inc.</p>
+                    <p>FCAA: 51214</p>
+                    <p>MBL#: MBRK-T100987</p>
+                    <p>FCNB: 230043033</p>
+                    <p>QIC: 608834</p>
+                </div>
+            </div>
+        </div>
+        <div class="px-8 md:px-12 pb-10 flex flex-col md:flex-row justify-between items-center gap-4 max-w-7xl mx-auto">
+            <p class="text-zinc-600 text-xs tracking-wide">
+                © 2024 BRX Mortgage Inc. | All Rights Reserved
+            </p>
+            <a href="#" class="text-zinc-600 text-xs hover:text-primary transition-colors">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS                                      -->
+    <!-- ============================================ -->
+    <script>
+        // FAQ Accordion
+        function toggleFaq(el) {
+            const isOpen = el.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('open'));
+            // Toggle clicked
+            if (!isOpen) el.classList.add('open');
+        }
+
+        // Testimonial scroll
+        const track = document.getElementById('testimonial-track');
+        document.getElementById('testimonial-prev')?.addEventListener('click', () => {
+            track.scrollBy({ left: -420, behavior: 'smooth' });
+        });
+        document.getElementById('testimonial-next')?.addEventListener('click', () => {
+            track.scrollBy({ left: 420, behavior: 'smooth' });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu')?.classList.add('hidden');
+                }
+            });
+        });
+
+        // Nav background on scroll
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg', 'shadow-black/20');
+            } else {
+                nav.classList.remove('shadow-lg', 'shadow-black/20');
+            }
+        });
+    </script>
+</body>
+
+</html>
